@@ -11,7 +11,6 @@ export default function Layout({ children }) {
         <div className="bg-white flex-grow mt-3 mr-3 mb-3 rounded-lg p-4">
             { children }
         </div>
-        {/* <button onClick={() => signOut()}>Sign out</button> */}
       </div>
     )
   }

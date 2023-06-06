@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import {signOut} from "next-auth/react"
 
 export default function Nav() {
     const inactiveLink = 'flex gap-1 p-1';
@@ -43,6 +44,8 @@ export default function Nav() {
 
                     Settings
                 </Link>
+                <button onClick={() => signOut()} className="text-blue-100 text-sm text-start m-2 underline">Sign out</button>
+
             </nav>
         </aside>
     )

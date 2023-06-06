@@ -1,7 +1,11 @@
 import Layout from "@/components/Layout";
+import Link from "next/link";
 
 export default function Products() {
     return (
-        <Layout>Products Page</Layout>
+        <Layout>
+            <Link className="bg-green-700 text-white py-1 px-2 rounded-md" href={'/products/new'}> Add new product</Link>
+        </Layout>
+        
     )
 }
