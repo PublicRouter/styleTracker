@@ -11,7 +11,21 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+      </body>
     </html>
+  )
+}
+
+import { SessionProvider } from "next-auth/react"
+
+export default function App({
+  Component, pageProps: { session, ...pageProps }
+}) {
+  return (
+    <SessionProvider session={session}>
+      <Component {...pageProps}/>
+    </SessionProvider>
   )
 }
