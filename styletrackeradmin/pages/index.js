@@ -6,19 +6,15 @@ export default function Home() {
   if (!session) return <Layout />;
   return (
     <Layout>
-      <div className="text-blue-900 flex gap-2 items-center">
-        <div>
-          <img src={session?.user?.image} alt="users google profile image" className="h-8 w-8" />
+      <div className="text-blue-900 flex items-center justify-between mr-3">
+        <h1>Dashboard</h1>
+        <div className="flex gap-1 items-center">
+          <img src={session?.user?.image} alt="users google profile image" className="h-6 w-6" />
+          <h2>Hello, <b>{session?.user?.name}</b></h2>
         </div>
-        <h2>Hello, <b>{session?.user?.name}</b></h2>
+        
       </div>
-      <div className="bg-blue-500 flex flex-wrap min-h-[60%] m-4 rounded-lg overflow-hidden">
-        <div className="flex-grow min-w-[320px] m-1 p-1 bg-white rounded-lg">
-
-        </div>
-        <div className="m-1 p-1 flex-grow min-w-[300px]">
-
-        </div>
+      <div className="bg-white border-blue-500 border-2 flex flex-wrap min-h-[60%] mx-2 mt-3 rounded-lg overflow-hidden">
 
       </div>
     </Layout>

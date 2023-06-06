@@ -1,7 +1,9 @@
 import Layout from "@/components/Layout";
 
-export default function Products() {
+export default function Settings() {
     return (
-        <Layout>Settings Page</Layout>
+        <Layout>
+            <h1>Settings Page</h1>
+        </Layout>
     )
 }
