@@ -17,7 +17,7 @@ export default function Layout({ children }) {
 
   return (
     <main className="flex min-h-screen min-w-screen flex-col items-center justify-center p-4 bg-blue-500">
-      <h1 className="pb-[5vh] text-[28px] text-center text-white underline md:text-[36px]">StyleTracker</h1>
+      <h1 className="pb-[1vh] text-[28px] text-center text-white underline md:text-[36px]">StyleTracker</h1>
       <button onClick={() => signIn('google')} className="bg-white text-blue-500 border-2 p-2 px-3 mb-12 rounded-lg hover:bg-blue-600 hover:text-white">Login with Google</button>
     </main>
   )

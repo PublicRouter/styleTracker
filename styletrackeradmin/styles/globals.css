@@ -14,8 +14,16 @@ label {
     @apply bg-blue-900 text-white px-4 py-2 rounded-md m-2 text-[14px];
 }
 
-.btn-secondary {
+/* .btn-secondary {
     
+} */
+
+.btn-red {
+    @apply bg-red-500 text-white px-4 py-1 rounded-md text-[14px];
+}
+
+.btn-def {
+    @apply bg-gray-600 text-white px-4 py-1 rounded-md text-[14px];
 }
 
 table.basic {
@@ -23,7 +31,7 @@ table.basic {
 }
 
 table.basic a {
-    @apply bg-green-500 px-3 py-1 rounded-md m-1 text-white text-[12px] inline-flex gap-1 items-center;
+    @apply px-3 py-1 rounded-md m-1 text-white text-[12px] inline-flex gap-1 items-center;
 }
 
 table.basic thead tr td {
