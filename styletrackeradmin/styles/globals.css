@@ -10,6 +10,10 @@ label {
     @apply text-blue-900 m-1;
 }
 
+img {
+    @apply h-full;
+}
+
 .btn-primary {
     @apply bg-blue-900 text-white px-4 py-2 rounded-md m-2 text-[14px];
 }

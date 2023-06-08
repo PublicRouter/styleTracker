@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import Spinner from "./Spinner";
 
 export default function ProductForm({
     _id,
@@ -16,12 +17,13 @@ export default function ProductForm({
     const [images, setImages] = useState(existingImages || []);
 
     const [goProductPage, setGoProductPage] = useState(false);
+    const [isUploading, setIsUploading] = useState(false);
 
     const router = useRouter();
 
     async function saveProduct(e) {
         e.preventDefault();
-        const data = { title, description, price };
+        const data = { title, description, price, images };
 
         if (_id) {
             //update product 
@@ -41,14 +43,19 @@ export default function ProductForm({
     async function uploadImages(ev) {
         const files = ev.target?.files;
         if (files?.length > 0) {
+            setIsUploading(true);
             const data = new FormData();
             for (const file of files) {
                 data.append('file', file);
-              }
+            };
 
             const res = await axios.post('/api/upload', data);
             console.log(res.data);
 
+            setImages(oldImages => {
+                return [...oldImages, ...res.data.links];
+            });
+            setIsUploading(false);
         }
     }
 
@@ -64,7 +71,17 @@ export default function ProductForm({
             <label>
                 Photos
             </label>
-            <div className="mb-2">
+            <div className="mb-2 flex flex-wrap gap-1">
+                {!!images?.length && images.map(link => (
+                    <div key={link} className="h-24">
+                        <img src={link} alt="product image" className="rounded-lg"></img>
+                    </div>
+                ))}
+                {isUploading && (
+                    <div className="h-24 flex items-center">
+                        <Spinner />
+                    </div>
+                )}
                 <label className="w-24 h-24 border flex items-center justify-center gap-1 text-gray-500 rounded-lg bg-gray-200 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
@@ -72,7 +89,7 @@ export default function ProductForm({
                     <div className="text-sm">
                         Upload
                     </div>
-                    <input type="file" className="hidden" onChange={uploadImages}/>
+                    <input type="file" className="hidden" onChange={uploadImages} />
                 </label>
                 {!images.length && (
                     <div>No Photos for this product!</div>
