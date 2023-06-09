@@ -25,7 +25,7 @@ export default function Products() {
                 </thead>
                 <tbody>
                     {products.map(product => (
-                        <tr>
+                        <tr key={product._id}>
                             <td className="text-sm">{product.title}</td>
                             <td>
                                 <Link className="bg-green-500" href={'/products/edit/' + product._id}>

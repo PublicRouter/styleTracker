@@ -14,8 +14,8 @@ export default async function handler(req, res) {
         });
     });
 
-    console.log('length:', files.file.length);
-    console.log("file: ", files.file);
+    // console.log('length:', files.file.length);
+    // console.log("file: ", files.file);
 
     const client = new S3Client({
         region: 'us-east-2',
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
     for(const file of files.file) {
 
         const ext = file.originalFilename.split('.').pop();
-        console.log({ext, file});
+        // console.log({ext, file});
         
         const newFilename = Date.now() + '.' + ext;
 
@@ -43,11 +43,8 @@ export default async function handler(req, res) {
         }));
 
         const link = `https://${bucketName}.s3.amazonaws.com/${newFilename}`;
-        links.push(link);
-    
-    }
-
-   
+        links.push(link); 
+    };
 
     return res.json({links});
 };
