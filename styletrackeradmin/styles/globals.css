@@ -27,7 +27,12 @@ img {
 }
 
 .btn-def {
-    @apply bg-gray-600 text-white px-4 py-1 rounded-md text-[14px];
+    @apply bg-yellow-500 text-white px-4 py-1 rounded-md text-[14px];
+}
+
+.btn-basic {
+    @apply bg-gray-500 text-white px-4 py-1 rounded-md text-[14px];
+
 }
 
 table.basic {
@@ -47,7 +52,7 @@ table.basic tr td {
 }
 
 
-input, textarea {
+input, textarea, select{
     border: solid rgb(187, 187, 187) 2px;
     border-radius: 10px;
     padding: 3.5px;

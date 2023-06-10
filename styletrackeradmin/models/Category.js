@@ -6,6 +6,7 @@ const CategorySchema = new Schema({
     },
     parent: {
         type: mongoose.Types.ObjectId,
+        ref: 'Category',
     }
 });
 

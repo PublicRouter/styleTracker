@@ -1,4 +1,4 @@
-const { Schema, model, models } = require("mongoose");
+const { Schema, model, models, default: mongoose } = require("mongoose");
 // import { Schema, model } from "mongoose";
 
 const ProductSchema = new Schema({
@@ -10,6 +10,10 @@ const ProductSchema = new Schema({
     price: {
         type: Number,
         required: true
+    },
+    category: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Category',
     },
     images: [{
         type: String,
