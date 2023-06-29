@@ -7,6 +7,10 @@ export default function Nav() {
     const activeLink = inactiveLink + ' bg-white text-blue-900 rounded-l-lg';
     const router = useRouter();
     const { pathname } = router;
+    async function logout() {
+        router.push('/');
+        await signOut();
+    };
 
     return (
         <aside className="text-white p-6 pr-0 min-w-[31vw]">
@@ -53,7 +57,7 @@ export default function Nav() {
 
                     Settings
                 </Link>
-                <button onClick={() => signOut()} className="text-blue-100 text-sm text-start m-2 underline">Sign out</button>
+                <button onClick={logout} className="text-blue-100 text-sm text-start m-2 underline">Sign out</button>
 
             </nav>
         </aside>

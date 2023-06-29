@@ -18,6 +18,9 @@ const ProductSchema = new Schema({
     images: [{
         type: String,
     }],
+    properties: {
+        type: Object,
+    },
 });
 
 export const Product = models.Product || model('Product', ProductSchema)

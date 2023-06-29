@@ -1,19 +1,23 @@
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
+import { isAdminRequest } from "./auth/[...nextauth]";
 
 export default async function handler(req, res) {
     const { method } = req;
     await mongooseConnect();
+    await isAdminRequest(req, res)    
+
 
     if ( method === 'POST' ) {
-        const { title, description, price, images, category } = req.body;
+        const { title, description, price, images, category, properties } = req.body;
 
         const productCreate = await Product.create({
             title,
             description,
             price,
             images,
-            category
+            category,
+            properties
         });
 
         res.json(productCreate);
@@ -28,14 +32,16 @@ export default async function handler(req, res) {
     };
 
     if ( method === 'PUT') {
-        const { title, description, price, images, category, _id } = req.body;
+        const { title, description, price, images, category, properties, _id } = req.body;
         //CANNOT CHANGE CATEGORY BACK TO UNCATEGORIZED("") DUE TO OBJECT ID TYPE
         //HOT FIX
-        if (category === '') {
-            await Product.updateOne({ _id }, { title, description, price, images } );
-        } else {
-            await Product.updateOne({ _id }, { title, description, price, images, category } );
-        }
+        // if (category === '') {
+        //     await Product.updateOne({ _id }, { title, description, price, images } );
+        // } else {
+        //     await Product.updateOne({ _id }, { title, description, price, images, category } );
+        // }
+        await Product.updateOne({ _id }, { title, description, price, images, category, properties } );
+
         res.json(true);
     };
 

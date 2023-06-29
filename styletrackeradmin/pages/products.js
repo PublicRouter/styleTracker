@@ -4,18 +4,18 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Products() {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([]);
 
     useEffect(() => {
         axios.get('/api/products').then(res => {
             setProducts(res.data);
-        })
+        });
     }, []);
 
     return (
         <Layout>
             <h1>Products</h1>
-            <Link className="btn-primary" href={'/products/new'}> Add new product</Link>
+            <Link className="btn-primary m-2" href={'/products/new'}> Add new product</Link>
             <table className="basic m-2 mt-6">
                 <thead>
                     <tr>
@@ -46,6 +46,5 @@ export default function Products() {
                 </tbody>
             </table>
         </Layout>
-
-    )
-}
+    );
+};
