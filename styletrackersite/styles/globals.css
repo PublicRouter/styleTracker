@@ -10,3 +10,33 @@ body {
 .navigation a {
   margin-inline: 8px;
 }
+
+.navigation a:hover {
+  color: white;
+}
+
+.navigation a:active {
+  color: white;
+}
+
+.buttonDiv button {
+  font-size: .8em;
+  padding: 10px 20px;
+  margin-right: 6px;
+  background-color: #ffffff;
+  color: #222;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 40px;
+  min-width: 120px;
+}
+
+.buttonDiv :nth-child(2) {
+  background-color: #5542F6;
+  color: white;
+}
+
+.buttonDiv button:hover {
+  border:1px solid #222;
+  border-radius: 5px;
+}
