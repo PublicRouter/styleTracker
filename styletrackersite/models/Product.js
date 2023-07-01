@@ -1,5 +1,5 @@
-const { Schema, model, models, default: mongoose } = require("mongoose");
-// import { Schema, model } from "mongoose";
+// const { Schema, model, models, default: mongoose } = require("mongoose");
+import mongoose, { Schema, model, models } from "mongoose";
 
 const ProductSchema = new Schema({
     title: {
