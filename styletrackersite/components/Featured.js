@@ -10,7 +10,7 @@ export default function Featured({product}) {
     };
 
     return (
-        <div className="pt-[5.5em] pb-10 px-8 sm:px-5 bg-gray-800 text-white flex flex-col items-around sm:justify-around sm:flex-row">
+        <div className="pt-[5.5em] pb-10 px-8 sm:px-5 bg-[#222] text-white flex flex-col items-around sm:justify-around sm:flex-row">
             <div className="flex flex-col mb-5 sm:mb-0 sm:max-w-[40%] sm:justify-center sm:mb-5">
                 <h1 className="text-[2.1em]">{product.title}</h1>
                 <p className="text-[#aaa] text-[.8rem]">

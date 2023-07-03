@@ -13,7 +13,7 @@ body {
 }
 
 .navigation a:hover {
-  color: white;
+  color: #c5c4c4;
 }
 
 .navigation a:active {
@@ -57,4 +57,12 @@ body {
 .buttonDiv a:hover {
   border:1px solid #222;
   border-radius: 5px;
+}
+
+
+/* ORDER PAGE */
+.orderInfoBox input{
+  padding:2px 20px;
+  margin: 5px;
+  width: 90%;
 }
