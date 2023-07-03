@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: #f0f0f0;
 }
 
 .navigation a {
@@ -28,7 +29,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   height: 40px;
-  min-width: 120px;
+  min-width: 130px;
 }
 
 .buttonDiv a {
@@ -40,7 +41,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   height: 40px;
-  min-width: 120px;
+  min-width: 130px;
 }
 
 .buttonDiv :nth-child(2) {
