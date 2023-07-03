@@ -1,6 +1,10 @@
 import Link from "next/link";
+import { useContext } from "react";
+import { CartContext } from "./CartContext";
 
 export default function Header() {
+    const { cartProducts } = useContext(CartContext);
+
     return(
         <header className="flex gap-3 items-center justify-between bg-gray-800 p-4">
             <Link href={'/'} className="text-white">StyleTracker</Link>
@@ -9,7 +13,7 @@ export default function Header() {
                 <Link href={'/products'}>All Products</Link>
                 <Link href={'/categories'}>Categories</Link>
                 <Link href={'/account'}>Account</Link>
-                <Link href={'/cart'}>Cart(0)</Link>
+                <Link href={'/cart'}>Cart({cartProducts.length})</Link>
             </nav>
         </header>
     )

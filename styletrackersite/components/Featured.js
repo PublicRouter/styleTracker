@@ -1,9 +1,12 @@
 import Link from "next/link";
+import { useContext } from "react";
+import { CartContext } from "./CartContext";
 
 export default function Featured({product}) {
+    const {addProduct} = useContext(CartContext);
 
     function addFeaturedToCart() {
-
+        addProduct(product._id);
     };
 
     return (
