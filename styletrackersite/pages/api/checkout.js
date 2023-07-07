@@ -10,7 +10,7 @@ export default async function handler(req, res) {
         return;
     }
 
-    const { name, email, city, zip, streetAddress, country, cartProducts } = req.body;
+    const { name, email, city, state, zip, streetAddress, country, cartProducts } = req.body;
 
     await mongooseConnect();
 
@@ -40,6 +40,7 @@ export default async function handler(req, res) {
         name,
         email,
         city,
+        state,
         zip,
         streetAddress,
         country,

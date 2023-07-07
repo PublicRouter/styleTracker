@@ -68,5 +68,17 @@ input:focus, textarea:focus {
     padding-inline: 6px;
 }
 
+.recipInfo span {
+    padding: 8px;
+}
+
+.productsOl {
+    list-style-type:decimal;
+    padding: 10px;
+    
+}
+
+.productsOl li {
+}
 
 

@@ -10,6 +10,7 @@ export default function CartPage() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [city, setCity] = useState('');
+    const [state, setState] = useState('');
     const [zip, setZip] = useState('');
     const [streetAddress, setStreetAddress] = useState('');
     const [country, setCountry] = useState('');
@@ -47,7 +48,7 @@ export default function CartPage() {
 
     async function goToPayment() {
         const response = await axios.post('/api/checkout', {
-            name, email, city, zip, streetAddress, country,
+            name, email, city, state, zip, streetAddress, country,
             cartProducts,
         });
         if (response.data.url) {
@@ -137,8 +138,9 @@ export default function CartPage() {
                         <input type="text" placeholder="Email" value={email} name="email" onChange={ev => setEmail(ev.target.value)} />
                         <div className="flex gap-[5px]">
                             <input type="text" placeholder="City" value={city} name="city" onChange={ev => setCity(ev.target.value)} />
-                            <input type="text" placeholder="Zip" value={zip} name="zip" onChange={ev => setZip(ev.target.value)} />
+                            <input type="text" placeholder="State" value={state} name="state" onChange={ev => setState(ev.target.value)} />
                         </div>
+                        <input type="text" placeholder="Zip" value={zip} name="zip" onChange={ev => setZip(ev.target.value)} />
                         <input type="text" placeholder="Street Address" value={streetAddress} name="streetAddress" onChange={ev => setStreetAddress(ev.target.value)} />
                         <input type="text" placeholder="Country" value={country} name="country" onChange={ev => setCountry(ev.target.value)} />
                         <button onClick={goToPayment} className="bg-gray-100 hover:bg-white py-2 px-4 rounded-full text-[.7em] mt-5 border-[1px] border-white] hover:border-[1.5px]">Continue to Payment</button>
