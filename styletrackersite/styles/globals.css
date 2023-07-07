@@ -59,6 +59,34 @@ body {
   border-radius: 5px;
 }
 
+.cartButton {
+  padding: 10px 6px;
+  margin-right: 6px;
+  background-color: #ffffff;
+  border: 1px solid #5542F6;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 30px;
+  min-width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  color: #5542F6;
+}
+
+.cartButton:hover {
+  border:1px solid #ccc;
+  border-radius: 5px;
+  background-color: #5542F6;
+  color: white;
+}
+
+.cartButton svg{
+  height: 16px;
+  margin-right: 5px;
+}
+
 
 /* ORDER PAGE */
 .orderInfoBox input{
