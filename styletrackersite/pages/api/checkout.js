@@ -35,8 +35,6 @@ export default async function handler(req, res) {
         }
     }
 
-    console.log("LINE ITEMS: ", lineItems)
-
     const orderDoc = await Order.create({
         lineItems,
         name,
@@ -56,6 +54,8 @@ export default async function handler(req, res) {
         cancel_url: process.env.PUBLIC_URL + '/cart?canceled=1',
         metadata: { orderId: orderDoc._id.toString(), test: 'ok' },
     });
+
+    console.log("stripe session object: ", session)
 
     res.json({
         url: session.url,
