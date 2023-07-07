@@ -4,7 +4,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 
 export default function CartPage() {
-    const { cartProducts, addProduct, removeProduct } = useContext(CartContext);
+    const { cartProducts, addProduct, removeProduct, clearCart } = useContext(CartContext);
     const [products, setProducts] = useState([]);
 
     const [name, setName] = useState('');
@@ -13,6 +13,8 @@ export default function CartPage() {
     const [zip, setZip] = useState('');
     const [streetAddress, setStreetAddress] = useState('');
     const [country, setCountry] = useState('');
+
+    const [isSuccess,setIsSuccess] = useState(false);
 
     useEffect(() => {
         if (cartProducts.length > 0) {
@@ -24,6 +26,15 @@ export default function CartPage() {
             setProducts([]);
         }
     }, [cartProducts]);
+    useEffect(() => {
+        if (typeof window === 'undefined') {
+            return;
+        }
+        if (window?.location.href.includes('success')) {
+            setIsSuccess(true);
+            clearCart();
+        }
+    }, []);
 
     function addProductQuantity(productId) {
         addProduct(productId);
@@ -33,10 +44,35 @@ export default function CartPage() {
         removeProduct(productId)
     };
 
+    async function goToPayment() {
+        const response = await axios.post('/api/checkout', {
+            name, email, city, zip, streetAddress, country,
+            cartProducts,
+        });
+        if (response.data.url) {
+            window.location = response.data.url;
+        }
+    };
+
     let total = 0;
     for (const productId of cartProducts) {
         const price = products.find(p => p._id === productId)?.price || 0;
         total += price;
+    }
+
+    if (isSuccess) {
+        return (
+            <>
+                <Header />
+                <div className="m-10">
+                    <div className="bg-white w-fit p-12 rounded-lg">
+                        <h1 className="text-[2em] mb-2">Thanks for your order!</h1>
+                        <p>We will email you the details as soon as your order has been processed.</p>
+                    </div>
+                </div>
+
+            </>
+        )
     }
 
 
@@ -96,20 +132,15 @@ export default function CartPage() {
                 {!!cartProducts?.length && (
                     <div className="orderInfoBox w-[90%] sm:w-[40%] min-h-[200px] bg-[#222] rounded-lg p-[30px]">
                         <h2 className="font-bold text-[1.1em] text-white mb-2   ">Order <br></br>Information:</h2>
-                        <form method="post" action="/api/checkout">
-                            <input type="text" placeholder="Name" value={name} name="name" onChange={ev => setName(ev.target.value)} />
-                            <input type="text" placeholder="Email" value={email} name="email" onChange={ev => setEmail(ev.target.value)} />
-                            <div className="flex gap-[5px]">
-                                <input type="text" placeholder="City" value={city} name="city" onChange={ev => setCity(ev.target.value)} />
-                                <input type="text" placeholder="Zip" value={zip} name="zip" onChange={ev => setZip(ev.target.value)} />
-                            </div>
-                            <input type="text" placeholder="Street Address" value={streetAddress} name="streetAddress" onChange={ev => setStreetAddress(ev.target.value)} />
-                            <input type="text" placeholder="Country" value={country} name="country" onChange={ev => setCountry(ev.target.value)} />
-                            <input type="hidden" name="products" value={cartProducts.join(',')} />
-                            <button type="submit" className="bg-gray-100 hover:bg-white py-2 px-4 rounded-full text-[.7em] mt-5 border-[1px] border-white] hover:border-[1.5px]">Continue to Payment</button>
-                        </form>
-
-
+                        <input type="text" placeholder="Name" value={name} name="name" onChange={ev => setName(ev.target.value)} />
+                        <input type="text" placeholder="Email" value={email} name="email" onChange={ev => setEmail(ev.target.value)} />
+                        <div className="flex gap-[5px]">
+                            <input type="text" placeholder="City" value={city} name="city" onChange={ev => setCity(ev.target.value)} />
+                            <input type="text" placeholder="Zip" value={zip} name="zip" onChange={ev => setZip(ev.target.value)} />
+                        </div>
+                        <input type="text" placeholder="Street Address" value={streetAddress} name="streetAddress" onChange={ev => setStreetAddress(ev.target.value)} />
+                        <input type="text" placeholder="Country" value={country} name="country" onChange={ev => setCountry(ev.target.value)} />
+                        <button onClick={goToPayment} className="bg-gray-100 hover:bg-white py-2 px-4 rounded-full text-[.7em] mt-5 border-[1px] border-white] hover:border-[1.5px]">Continue to Payment</button>
                     </div>
                 )}
 
