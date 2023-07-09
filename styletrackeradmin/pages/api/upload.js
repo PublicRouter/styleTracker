@@ -19,9 +19,6 @@ export default async function handler(req, res) {
         });
     });
 
-    // console.log('length:', files.file.length);
-    // console.log("file: ", files.file);
-
     const client = new S3Client({
         region: 'us-east-2',
         credentials: {
@@ -35,7 +32,6 @@ export default async function handler(req, res) {
     for(const file of files.file) {
 
         const ext = file.originalFilename.split('.').pop();
-        // console.log({ext, file});
         
         const newFilename = Date.now() + '.' + ext;
 

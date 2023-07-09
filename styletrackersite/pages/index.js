@@ -3,10 +3,15 @@ import Header from "@/components/Header";
 import RecentProducts from "@/components/RecentProducts";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
+import Head from "next/head";
 
 export default function HomePage({featuredProduct, recentProducts}) {
   return(
     <div>
+      <Head>
+        <title>StyleTracker</title>
+
+      </Head>
       <Header />
       <Featured product={featuredProduct}/>
       <RecentProducts products={recentProducts} />
@@ -15,7 +20,7 @@ export default function HomePage({featuredProduct, recentProducts}) {
 }
 
 export async function getServerSideProps() {
-  const featuredProductId = "649dd92d93089e88f1c973d1";
+  const featuredProductId = "64a8d188302b633a2d27ab2c";
   await mongooseConnect();
 
   const featuredProduct = await Product.findById(featuredProductId);

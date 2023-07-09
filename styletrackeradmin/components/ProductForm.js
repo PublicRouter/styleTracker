@@ -36,13 +36,19 @@ export default function ProductForm({
     async function saveProduct(e) {
         e.preventDefault();
         const data = { title, description, price, images, category, properties: productProperties };
-
+        console.log("THIS IS MY properties: ", data.properties)
         if (_id) {
             //update product 
             await axios.put('/api/products', { ...data, _id });
         } else {
             //create
-            await axios.post('/api/products', data);
+            try {
+                await axios.post('/api/products', data);
+
+             } catch(err) {
+                console.log("PRODUCT POST CREATE ERR: ", err)
+             }
+                
         }
 
         setGoProductPage(true);
@@ -115,7 +121,11 @@ export default function ProductForm({
                     <div>
                         {p.name}
                     </div>
-                    <select value={productProperties[p.name]} onChange={ ev => setProductProp(p.name, ev.target.value )}>
+                    <select 
+                        value={productProperties[p.name] || "placeholder"} 
+                        onChange={ ev => setProductProp(p.name, ev.target.value )}
+                    >
+                        <option disabled value="placeholder">Select an option...</option>
                         {p.values.map( v => (
                             <option value={v}>{v}</option>
 

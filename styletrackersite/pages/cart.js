@@ -1,6 +1,7 @@
 import { CartContext } from "@/components/CartContext";
 import Header from "@/components/Header";
 import axios from "axios";
+import Head from "next/head";
 import { useContext, useEffect, useState } from "react";
 
 export default function CartPage() {
@@ -15,7 +16,7 @@ export default function CartPage() {
     const [streetAddress, setStreetAddress] = useState('');
     const [country, setCountry] = useState('');
 
-    const [isSuccess,setIsSuccess] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
 
     useEffect(() => {
         if (cartProducts.length > 0) {
@@ -34,7 +35,7 @@ export default function CartPage() {
         if (window?.location.href.includes('success')) {
             clearCart();
             setIsSuccess(true);
-            console.log("cart products after clear: ",cartProducts)
+            console.log("cart products after clear: ", cartProducts)
         }
     }, []);
 
@@ -66,6 +67,9 @@ export default function CartPage() {
         return (
             <>
                 <Header />
+                <Head>
+                    <title>Cart</title>
+                </Head>
                 <div className="m-10">
                     <div className="bg-white w-fit p-12 rounded-lg">
                         <h1 className="text-[2em] mb-2">Thanks for your order!</h1>
@@ -82,9 +86,12 @@ export default function CartPage() {
     return (
         <>
             <Header />
+            <Head>
+                <title>Cart</title>
+            </Head>
             <div className="flex items-center sm:items-start flex-col sm:flex-row sm:m-10 gap-6 min-h-[300px]">
                 <div className="mt-8 sm:mt-0 w-[90%] sm:w-[60%] h-full bg-white rounded-lg p-[30px]">
-                    <h2 className="mb-6 font-bold text-[1.3em]">Cart </h2>
+                    <h2 className="font-serif mb-6 font-bold text-[1.3em]">Cart </h2>
 
                     {!cartProducts?.length && (
                         <div className="">
@@ -115,7 +122,7 @@ export default function CartPage() {
                                             <span className="mx-2">{cartProducts.filter(id => id === product._id).length}</span>
                                             <button onClick={() => addProductQuantity(product._id)} className="bg-gray-200 rounded-lg px-3">+</button>
                                         </td>
-                                        <td>${cartProducts.filter(id => id === product._id).length * product.price}</td>
+                                        <td>${(cartProducts.filter(id => id === product._id).length * product.price).toFixed(2)}</td>
 
                                     </tr>
                                 ))}
@@ -143,7 +150,7 @@ export default function CartPage() {
                         <input type="text" placeholder="Zip" value={zip} name="zip" onChange={ev => setZip(ev.target.value)} />
                         <input type="text" placeholder="Street Address" value={streetAddress} name="streetAddress" onChange={ev => setStreetAddress(ev.target.value)} />
                         <input type="text" placeholder="Country" value={country} name="country" onChange={ev => setCountry(ev.target.value)} />
-                        <button onClick={goToPayment} className="bg-gray-100 hover:bg-white py-2 px-4 rounded-full text-[.7em] mt-5 border-[1px] border-white] hover:border-[1.5px]">Continue to Payment</button>
+                        <button onClick={goToPayment} className="bg-gray-100 hover:bg-white py-2 px-4 rounded-full text-[.7em] sm:text-[.8em] mt-5 border-[1px] border-white] hover:border-[1.5px]">Continue to Payment</button>
                     </div>
                 )}
 

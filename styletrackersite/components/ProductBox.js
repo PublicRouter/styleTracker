@@ -14,9 +14,9 @@ export default function ProductBox({ _id, title, description, price, images }) {
                 </div>
             </Link>
             <div className="mt-2">
-                <Link className="font-semibold text-[.9rem] text-inherit no-underline m-0" href={url}>{title}</Link>
+                <Link className="font-semibold text-[.8rem] text-inherit no-underline m-0" href={url}>{title}</Link>
                 <div className="block md:flex md:gap-1 items-center justify-between mt-1">
-                    <span className="text-[1rem] font-medium text-right md:text-[2.2vw] lg:text-[1.8vw] md:font-semibold md:text-left">
+                    <span className="text-[1rem] xl:text-[1rem] font-medium text-right md:text-[2.2vw] lg:text-[1.8vw] md:font-semibold md:text-left">
                         ${price}
                     </span>
                     <button className="cartButton text-[.5em] sm:text-[.6em]" block onClick={() => addProduct(_id)} primary outline>
