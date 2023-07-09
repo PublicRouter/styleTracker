@@ -10,7 +10,7 @@ export default function RecentProducts({ products }) {
             <h1 className="font-serif text-[#222] text-[32px] ml-4 p-6">Newly Added Products</h1>
             <div className="grid grid-cols-2  gap-6 p-4 mx-4 text-[#222] mb-[6em] sm:grid-cols-3 md:grid-cols-4 lg:mx-[8vw]">
                 {products?.length > 0 && products.map(product => (
-                    <div className="">
+                    <div key={product._id}>
                         <Link href={'/product/'+product._id} className="bg-white p-4 w-full rounded-lg h-[140px] lg:h-[160px] text-center flex items-center justify-center">
                             <div className="">
                                 <img src={product.images[0]} className="max-w-full max-h-[80px]" alt="product image" />

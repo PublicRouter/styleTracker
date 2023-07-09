@@ -28,6 +28,7 @@ export default function CartPage() {
             setProducts([]);
         }
     }, [cartProducts]);
+
     useEffect(() => {
         if (typeof window === 'undefined') {
             return;
@@ -110,7 +111,7 @@ export default function CartPage() {
                             </thead>
                             <tbody>
                                 {products.map(product => (
-                                    <tr>
+                                    <tr key={product._id}>
                                         <td>
                                             {product.title}
                                             <div className="max-h-[80px] max-w-[80px] flex items-center justify-center p-2 bg-white shadow-md m-2 border-[1px] border-gray-300 shadow-[#666] rounded-md">

@@ -16,7 +16,7 @@ export default function CategoriesPage({ clothingTypes }) {
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 lg:px-[100px] gap-2 mt-8 text-start md:max-w-[800px] lg:mx-auto ">
                     {clothingTypes?.map(clothingType => (
 
-                        <Link href={`categories/${clothingType}`} className="text-[.75em] text-[#333] text-center bg-[#888] hover:bg-[#333] text-white rounded-full">
+                        <Link key={(Math.random() * 100).toFixed(2)} href={`categories/${clothingType}`} className="text-[.75em] text-[#333] text-center bg-[#888] hover:bg-[#333] text-white rounded-full">
                             <div className="p-2 m-[3.5px] rounded-full bg-[#f0f0f0] text-[#333]">
                                 <b>{clothingType}</b>
                             </div>
