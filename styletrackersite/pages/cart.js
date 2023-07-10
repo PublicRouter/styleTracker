@@ -118,21 +118,16 @@ export default function CartPage() {
                                                 <img className="max-w-full max-h-[70px]" src={product.images[0]} />
                                             </div>
                                         </td>
-                                        <td className="">
+                                        <td>
                                             <button onClick={() => removeProductQuantity(product._id)} className="bg-gray-200 rounded-lg px-3">-</button>
                                             <span className="mx-2">{cartProducts.filter(id => id === product._id).length}</span>
                                             <button onClick={() => addProductQuantity(product._id)} className="bg-gray-200 rounded-lg px-3">+</button>
                                         </td>
                                         <td>${(cartProducts.filter(id => id === product._id).length * product.price).toFixed(2)}</td>
-
                                     </tr>
                                 ))}
-
-
                             </tbody>
-
                         </table>
-
                     )}
                     <div className=" w-[100%] flex px-10 border-t-2 mt-4">
                         <p className="h-[80px] w-full flex items-center justify-end font-bold">Total Price: ${total.toFixed(2)} </p>
