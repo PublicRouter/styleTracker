@@ -18,7 +18,9 @@ export default function CategoriesPage({ products, categoryType }) {
                     ))}
                 </div>   
             </div>
-            <Link className="my-16 ml-[12vw] text-[#aaa] hover:text-black w-fit" href='/categories'>← Back To Categories</Link>
+            <div className=" h-[240px] mt-6">
+                <Link className="ml-[12vw] text-[#aaa] hover:text-black w-fit" href='/categories'>← Back To Categories</Link>
+            </div>
         </div>
     )
 };
