@@ -90,8 +90,8 @@ export default function CartPage() {
             <Head>
                 <title>Cart</title>
             </Head>
-            <div className="flex items-center sm:items-start flex-col sm:flex-row sm:m-10 gap-6 min-h-[300px]">
-                <div className="mt-8 sm:mt-0 w-[90%] sm:w-[60%] h-full bg-white rounded-lg p-[30px]">
+            <div className="flex items-center sm:items-start flex-col md:flex-row sm:m-10 gap-6 min-h-[300px]">
+                <div className="mt-8 sm:mt-0 w-[90%] md:w-[60%] h-full bg-white rounded-lg p-[30px]">
                     <h2 className="font-serif mb-6 font-bold text-[1.3em]">Cart </h2>
 
                     {!cartProducts?.length && (
@@ -135,7 +135,7 @@ export default function CartPage() {
                 </div>
 
                 {!!cartProducts?.length && (
-                    <div className="orderInfoBox w-[90%] sm:w-[40%] min-h-[200px] bg-[#222] rounded-lg p-[30px]">
+                    <div className="orderInfoBox mb-16 w-[90%] md:w-[40%] min-h-[200px] bg-[#222] rounded-lg p-[30px]">
                         <h2 className="font-bold text-[1.1em] text-white mb-2   ">Order <br></br>Information:</h2>
                         <input type="text" placeholder="Name" value={name} name="name" onChange={ev => setName(ev.target.value)} />
                         <input type="text" placeholder="Email" value={email} name="email" onChange={ev => setEmail(ev.target.value)} />
