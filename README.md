@@ -1,7 +1,7 @@
 # Style-Tracker(E-Commerce)
 [Live Website Demo](https://style-tracker.vercel.app/)
 
-Online e-commerce website to list clothing items for sale, checkout customers via stripe, and automatically store and track orders.
+Online e-commerce website to list clothing items for sale, checkout customers via stripe, and automatically store and track orders. 
 
 
 
